@@ -1,0 +1,240 @@
+---
+title: "Prompt Engineering"
+section: 8
+duration: "4 minutes"
+objectives:
+  - "Learn to write effective prompts"
+  - "Understand prompt engineering techniques"
+  - "Practice with examples"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+
+<SectionHeader 
+  title="Prompt Engineering"
+  subtitle="The Art of Talking to AI"
+  gradient="from-yellow-400 via-orange-500 to-red-600"
+/>
+
+---
+
+## What Is Prompt Engineering?
+
+<TwoColumn
+  left={
+    <div className="space-y-6">
+      <h3 className="text-xl font-bold">It's Like Learning a New Language</h3>
+      
+      <div className="space-y-4">
+        <div className="glass-card p-4 bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800">
+          <h4 className="font-semibold text-red-700 dark:text-red-400 mb-2">❌ Bad Prompt</h4>
+          <p className="text-sm font-mono bg-red-100 dark:bg-red-900/50 p-2 rounded">
+            "Write something about cats"
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            Vague, no context, unpredictable results
+          </p>
+        </div>
+        
+        <div className="glass-card p-4 bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800">
+          <h4 className="font-semibold text-green-700 dark:text-green-400 mb-2">✅ Good Prompt</h4>
+          <p className="text-sm font-mono bg-green-100 dark:bg-green-900/50 p-2 rounded">
+            "Write a 200-word informative article about cat behavior for pet owners. Focus on why cats purr and knead. Use a friendly, educational tone."
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            Specific, clear context, defined output
+          </p>
+        </div>
+      </div>
+      
+      <Callout type="tip" title="Think of It As...">
+        Prompt engineering is like giving directions to a brilliant but literal-minded assistant who needs **very clear instructions**.
+      </Callout>
+    </div>
+  }
+  right={
+    <div className="mt-8 space-y-4">
+      <div className="glass-card p-6">
+        <h4 className="font-bold mb-4 text-center">The Anatomy of a Good Prompt</h4>
+        
+        <div className="space-y-4">
+          <div className="border-l-4 border-l-blue-400 pl-4">
+            <h5 className="font-semibold text-blue-600 dark:text-blue-400">Role</h5>
+            <p className="text-sm text-muted-foreground">"You are a [expert/teacher/assistant]..."</p>
+          </div>
+          
+          <div className="border-l-4 border-l-green-400 pl-4">
+            <h5 className="font-semibold text-green-600 dark:text-green-400">Context</h5>
+            <p className="text-sm text-muted-foreground">Background information and constraints</p>
+          </div>
+          
+          <div className="border-l-4 border-l-orange-400 pl-4">
+            <h5 className="font-semibold text-orange-600 dark:text-orange-400">Task</h5>
+            <p className="text-sm text-muted-foreground">Exactly what you want done</p>
+          </div>
+          
+          <div className="border-l-4 border-l-purple-400 pl-4">
+            <h5 className="font-semibold text-purple-600 dark:text-purple-400">Format</h5>
+            <p className="text-sm text-muted-foreground">How you want the output structured</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+/>
+
+---
+
+## Key Prompting Techniques
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">Proven Strategies That Work</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🎯 Be Specific</h4>
+      <div className="space-y-2">
+        <p className="text-sm text-red-600 dark:text-red-400">❌ "Make this better"</p>
+        <p className="text-sm text-green-600 dark:text-green-400">✅ "Improve the clarity and reduce wordiness in this paragraph while maintaining the professional tone"</p>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🧪 Few-Shot Examples</h4>
+      <div className="space-y-2">
+        <p className="text-sm">Show examples of what you want:</p>
+        <p className="text-xs font-mono bg-muted p-2 rounded">
+          Q: "Dog" A: "Animal"<br/>
+          Q: "Car" A: "Vehicle"<br/>
+          Q: "Apple" A: "Fruit"<br/>
+          Q: "Guitar" A: ?
+        </p>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🔗 Chain of Thought</h4>
+      <div className="space-y-2">
+        <p className="text-sm">Ask for step-by-step reasoning:</p>
+        <p className="text-sm text-green-600 dark:text-green-400">"Let's think through this step by step..."</p>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🎭 Role Playing</h4>
+      <div className="space-y-2">
+        <p className="text-sm">Give the AI a specific persona:</p>
+        <p className="text-sm text-green-600 dark:text-green-400">"Act as a experienced teacher explaining to a 5th grader..."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Advanced Prompting Patterns
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Power User Techniques</h3>
+  
+  <div className="space-y-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🔄 Iterative Refinement</h4>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded">
+          <h5 className="font-semibold text-blue-600 dark:text-blue-400">1. Brainstorm</h5>
+          <p className="text-sm text-muted-foreground">"Generate 10 ideas for..."</p>
+        </div>
+        <div className="bg-green-50 dark:bg-green-950/30 p-4 rounded">
+          <h5 className="font-semibold text-green-600 dark:text-green-400">2. Refine</h5>
+          <p className="text-sm text-muted-foreground">"Now improve the top 3 ideas by..."</p>
+        </div>
+        <div className="bg-purple-50 dark:bg-purple-950/30 p-4 rounded">
+          <h5 className="font-semibold text-purple-600 dark:text-purple-400">3. Execute</h5>
+          <p className="text-sm text-muted-foreground">"Write a detailed plan for idea #1"</p>
+        </div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🎯 Constraint-Based</h4>
+      <p className="text-sm">Use constraints to guide creativity:</p>
+      <div className="bg-muted/30 p-4 rounded font-mono text-sm">
+        "Write a story about space exploration in exactly 100 words, using only dialogue, set in the year 2150."
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🔧 Template-Based</h4>
+      <p className="text-sm">Create reusable prompt templates:</p>
+      <div className="bg-muted/30 p-4 rounded font-mono text-sm">
+        "Analyze [TOPIC] from the perspective of [ROLE]. Consider [CONSTRAINTS]. Provide insights on [SPECIFIC_ASPECTS]. Format as [OUTPUT_FORMAT]."
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Common Prompting Mistakes
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">What to Avoid</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="space-y-4">
+      <h4 className="font-bold text-red-600 dark:text-red-400">❌ Don't Do This</h4>
+      
+      <div className="glass-card p-4 border-red-200 dark:border-red-800">
+        <h5 className="font-semibold mb-2">Too Vague</h5>
+        <p className="text-sm font-mono bg-red-100 dark:bg-red-900/50 p-2 rounded">
+          "Help me with my project"
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">What project? What kind of help?</p>
+      </div>
+      
+      <div className="glass-card p-4 border-red-200 dark:border-red-800">
+        <h5 className="font-semibold mb-2">Contradictory Instructions</h5>
+        <p className="text-sm font-mono bg-red-100 dark:bg-red-900/50 p-2 rounded">
+          "Write a short 5-page essay"
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">Short or 5 pages? Pick one!</p>
+      </div>
+      
+      <div className="glass-card p-4 border-red-200 dark:border-red-800">
+        <h5 className="font-semibold mb-2">Assuming Context</h5>
+        <p className="text-sm font-mono bg-red-100 dark:bg-red-900/50 p-2 rounded">
+          "Continue from where we left off"
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">The AI doesn't remember previous conversations</p>
+      </div>
+    </div>
+    
+    <div className="space-y-4">
+      <h4 className="font-bold text-green-600 dark:text-green-400">✅ Do This Instead</h4>
+      
+      <div className="glass-card p-4 border-green-200 dark:border-green-800">
+        <h5 className="font-semibold mb-2">Be Specific</h5>
+        <p className="text-sm font-mono bg-green-100 dark:bg-green-900/50 p-2 rounded">
+          "Help me outline a marketing strategy for my food truck business"
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">Clear task and context</p>
+      </div>
+      
+      <div className="glass-card p-4 border-green-200 dark:border-green-800">
+        <h5 className="font-semibold mb-2">Clear Requirements</h5>
+        <p className="text-sm font-mono bg-green-100 dark:bg-green-900/50 p-2 rounded">
+          "Write a concise 2-page essay"
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">Consistent and clear</p>
+      </div>
+      
+      <div className="glass-card p-4 border-green-200 dark:border-green-800">
+        <h5 className="font-semibold mb-2">Provide Context</h5>
+        <p className="text-sm font-mono bg-green-100 dark:bg-green-900/50 p-2 rounded">
+          "Based on this data [paste data], analyze the trends and suggest next steps"
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">All necessary information included</p>
+      </div>
+    </div>\n  </div>\n</div>\n\n---\n\n## Try Prompt Engineering\n\n<div className=\"space-y-4\">\n  <h3 className=\"text-xl font-bold text-center\">Practice and Resources</h3>\n  \n  <div className=\"grid gap-4\">\n    <DemoLink\n      href=\"https://platform.openai.com/playground\"\n      title=\"OpenAI Playground\"\n      description=\"Experiment with different prompts and settings\"\n      preview=\"Adjust temperature, test different models, compare outputs\"\n      variant=\"large\"\n    />\n    \n    <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\">\n      <DemoLink\n        href=\"https://www.promptingguide.ai/\"\n        title=\"Prompting Guide\"\n        description=\"Comprehensive guide to prompt engineering\"\n        preview=\"Learn advanced techniques with examples and best practices\"\n      />\n      \n      <DemoLink\n        href=\"https://learnprompting.org/\"\n        title=\"Learn Prompting\"\n        description=\"Free course on prompt engineering\"\n        preview=\"Interactive lessons from basics to advanced techniques\"\n      />\n    </div>\n  </div>\n</div>\n\n---\n\n<Callout type=\"success\" title=\"Prompting: Your AI Superpower\">\n  Good prompting is the difference between frustration and amazement with AI. Be specific, provide context, use examples, and iterate. With practice, you'll unlock the full potential of language models!\n</Callout>

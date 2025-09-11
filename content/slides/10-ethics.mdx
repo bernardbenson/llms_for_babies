@@ -1,0 +1,316 @@
+---
+title: "Ethics & Safety"
+section: 10
+duration: "4 minutes"
+objectives:
+  - "Understand AI safety challenges"
+  - "Learn about bias and fairness"
+  - "Explore ethical considerations"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+
+<SectionHeader 
+  title="AI Ethics & Safety"
+  subtitle="With Great Power Comes Great Responsibility"
+  gradient="from-red-400 via-pink-500 to-purple-600"
+/>
+
+---
+
+## The Challenge of AI Alignment
+
+<TwoColumn
+  left={
+    <div className="space-y-6">
+      <h3 className="text-xl font-bold">Making AI Helpful, Harmless, and Honest</h3>
+      
+      <div className="space-y-4">
+        <div className="glass-card p-4 border-l-4 border-l-green-400">
+          <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">✅ Helpful</h4>
+          <p className="text-sm text-muted-foreground">
+            AI should assist users in achieving their legitimate goals
+          </p>
+        </div>
+        
+        <div className="glass-card p-4 border-l-4 border-l-orange-400">
+          <h4 className="font-semibold text-orange-600 dark:text-orange-400 mb-2">🛡️ Harmless</h4>
+          <p className="text-sm text-muted-foreground">
+            Avoid generating dangerous, illegal, or harmful content
+          </p>
+        </div>
+        
+        <div className="glass-card p-4 border-l-4 border-l-blue-400">
+          <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">📝 Honest</h4>
+          <p className="text-sm text-muted-foreground">
+            Provide accurate information and acknowledge uncertainty
+          </p>
+        </div>
+      </div>
+      
+      <Callout type="warning" title="The Alignment Problem">
+        It's surprisingly difficult to specify exactly what we want AI to do, especially as systems become more capable.
+      </Callout>
+    </div>
+  }
+  right={
+    <div className="mt-8 space-y-4">
+      <div className="glass-card p-6">
+        <h4 className="font-bold mb-4 text-center">Safety Challenges</h4>
+        
+        <div className="space-y-4">
+          <div className="bg-red-50 dark:bg-red-950/30 p-4 rounded">
+            <h5 className="font-semibold text-red-600 dark:text-red-400 mb-2">Misuse</h5>
+            <p className="text-sm text-muted-foreground">Bad actors using AI for harmful purposes</p>
+          </div>
+          
+          <div className="bg-orange-50 dark:bg-orange-950/30 p-4 rounded">
+            <h5 className="font-semibold text-orange-600 dark:text-orange-400 mb-2">Accidents</h5>
+            <p className="text-sm text-muted-foreground">AI systems behaving in unintended ways</p>
+          </div>
+          
+          <div className="bg-purple-50 dark:bg-purple-950/30 p-4 rounded">
+            <h5 className="font-semibold text-purple-600 dark:text-purple-400 mb-2">Alignment</h5>
+            <p className="text-sm text-muted-foreground">AI pursuing goals that aren't what we actually want</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+/>
+
+---
+
+## Bias and Fairness
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">AI Models Reflect Human Biases</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="space-y-4">
+      <h4 className="font-bold text-red-600 dark:text-red-400">❌ Where Bias Comes From</h4>
+      
+      <div className="space-y-3">
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">📊 Training Data</h5>
+          <p className="text-sm text-muted-foreground">
+            Internet text contains historical and cultural biases
+          </p>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">👥 Human Feedback</h5>
+          <p className="text-sm text-muted-foreground">
+            Human preferences reflect societal biases
+          </p>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">🔍 Selection Effects</h5>
+          <p className="text-sm text-muted-foreground">
+            Some voices are overrepresented in training data
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div className="space-y-4">
+      <h4 className="font-bold text-green-600 dark:text-green-400">✅ Mitigation Strategies</h4>
+      
+      <div className="space-y-3">
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">🎯 Diverse Training Data</h5>
+          <p className="text-sm text-muted-foreground">
+            Include multiple perspectives and demographics
+          </p>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">🧪 Bias Testing</h5>
+          <p className="text-sm text-muted-foreground">
+            Systematically test for unfair outcomes
+          </p>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">⚖️ Ongoing Monitoring</h5>
+          <p className="text-sm text-muted-foreground">
+            Continuously check for biased behavior in production
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div className="glass-card p-6 bg-yellow-50 dark:bg-yellow-950/30 border-yellow-200 dark:border-yellow-800">
+    <div className="flex items-start gap-3">
+      <span className="text-2xl">⚠️</span>
+      <div>
+        <h4 className="font-bold text-yellow-700 dark:text-yellow-400 mb-2">Real Examples of Bias</h4>
+        <ul className="text-sm space-y-1 text-muted-foreground">
+          <li>• Resume screening favoring male candidates</li>
+          <li>• Facial recognition working poorly on darker skin</li>
+          <li>• Language models associating professions with gender</li>
+          <li>• Search results showing bias in image results</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Privacy and Data Concerns
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">What Happens to Your Data?</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold text-red-600 dark:text-red-400">🔍 Privacy Risks</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">💾</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Data Storage</h5>
+            <p className="text-sm text-muted-foreground">Your conversations may be stored and analyzed</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🧠</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Model Memory</h5>
+            <p className="text-sm text-muted-foreground">Models might memorize sensitive information from training</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🔗</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Data Inference</h5>
+            <p className="text-sm text-muted-foreground">AI can infer personal details from seemingly harmless data</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold text-green-600 dark:text-green-400">🛡️ Protection Strategies</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🔒</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Data Minimization</h5>
+            <p className="text-sm text-muted-foreground">Don't share more than necessary</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🔐</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Encryption</h5>
+            <p className="text-sm text-muted-foreground">Use services with strong data protection</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">📋</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Read Privacy Policies</h5>
+            <p className="text-sm text-muted-foreground">Understand how your data is used</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Responsible AI Development
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">What the AI Community Is Doing</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🏢 Industry Efforts</h4>
+      <ul className="text-sm space-y-2 text-muted-foreground">
+        <li>• AI safety research teams</li>
+        <li>• Responsible AI principles</li>
+        <li>• Content filtering systems</li>
+        <li>• Red team testing</li>
+        <li>• Transparency reports</li>
+      </ul>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🏛️ Regulatory Response</h4>
+      <ul className="text-sm space-y-2 text-muted-foreground">
+        <li>• EU AI Act</li>
+        <li>• US AI Executive Order</li>
+        <li>• AI safety institutes</li>
+        <li>• International cooperation</li>
+        <li>• Ethics boards</li>
+      </ul>
+    </div>
+  </div>
+  
+  <Callout type="info" title="Your Role">
+    As AI becomes more powerful, everyone has a role in ensuring it's developed and used responsibly. Stay informed, ask questions, and advocate for ethical AI practices.
+  </Callout>
+</div>
+
+---
+
+## Learn More About AI Ethics
+
+<div className="space-y-4">
+  <h3 className="text-xl font-bold text-center">Resources for Deeper Understanding</h3>
+  
+  <div className="grid gap-4">
+    <DemoLink
+      href="https://www.anthropic.com/safety"
+      title="Anthropic AI Safety Research"
+      description="Leading research on AI alignment and safety"
+      preview="Constitutional AI, RLHF, and interpretability research"
+      variant="large"
+    />
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DemoLink
+        href="https://partnershiponai.org/"
+        title="Partnership on AI"
+        description="Multi-stakeholder organization for AI ethics"
+        preview="Research, best practices, and policy recommendations"
+      />
+      
+      <DemoLink
+        href="https://www.fatml.org/"
+        title="FAccT Conference"
+        description="Fairness, Accountability, and Transparency in ML"
+        preview="Academic research on ethical AI and algorithmic fairness"
+      />
+    </div>
+  </div>
+</div>
+
+---
+
+<Callout type="warning" title="Ethics: The Ongoing Challenge">
+  AI ethics isn't a problem to be solved once, but an ongoing challenge that requires constant vigilance, research, and societal engagement. The stakes are high, but so is the potential for positive impact!
+</Callout>

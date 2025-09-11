@@ -1,0 +1,308 @@
+---
+title: "The Future of LLMs"
+section: 11
+duration: "3 minutes"
+objectives:
+  - "Explore upcoming developments"
+  - "Understand future capabilities"
+  - "Consider societal implications"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+
+<SectionHeader 
+  title="The Future"
+  subtitle="What's Coming Next in AI"
+  gradient="from-blue-400 via-indigo-500 to-purple-600"
+/>
+
+---
+
+## Current Trends
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Where AI Is Heading</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">📈 Larger Models</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        The race for bigger, more capable models continues
+      </p>
+      <ul className="text-sm space-y-1 text-muted-foreground">
+        <li>• 10 trillion+ parameter models</li>
+        <li>• More efficient architectures</li>
+        <li>• Specialized model families</li>
+      </ul>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🌐 Multimodal AI</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Understanding text, images, audio, video together
+      </p>
+      <ul className="text-sm space-y-1 text-muted-foreground">
+        <li>• GPT-4 Vision, DALL-E 3</li>
+        <li>• Video generation models</li>
+        <li>• Real-time interaction</li>
+      </ul>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">⚙️ Reasoning Capabilities</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Better at math, logic, and complex problem solving
+      </p>
+      <ul className="text-sm space-y-1 text-muted-foreground">
+        <li>• Chain-of-thought reasoning</li>
+        <li>• Tool usage and APIs</li>
+        <li>• Multi-step planning</li>
+      </ul>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">📱 Personalization</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        AI that adapts to individual users and contexts
+      </p>
+      <ul className="text-sm space-y-1 text-muted-foreground">
+        <li>• Personal AI assistants</li>
+        <li>• Custom fine-tuned models</li>
+        <li>• Context-aware responses</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+---
+
+## Artificial General Intelligence (AGI)
+
+<TwoColumn
+  left={
+    <div className="space-y-6">
+      <h3 className="text-xl font-bold">The Holy Grail of AI</h3>
+      
+      <div className="glass-card p-4 bg-blue-50 dark:bg-blue-950/30">
+        <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">What is AGI?</h4>
+        <p className="text-sm text-muted-foreground">
+          AI systems that match or exceed human cognitive abilities across all domains
+        </p>
+      </div>
+      
+      <div className="space-y-3">
+        <h4 className="font-semibold">Timeline Predictions:</h4>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center p-2 bg-muted/30 rounded">
+            <span className="text-sm">Optimistic</span>
+            <span className="font-bold text-green-600">2025-2030</span>
+          </div>
+          <div className="flex justify-between items-center p-2 bg-muted/30 rounded">
+            <span className="text-sm">Moderate</span>
+            <span className="font-bold text-orange-600">2030-2050</span>
+          </div>
+          <div className="flex justify-between items-center p-2 bg-muted/30 rounded">
+            <span className="text-sm">Conservative</span>
+            <span className="font-bold text-red-600">2050+</span>
+          </div>
+        </div>
+      </div>
+      
+      <Callout type="warning" title="Uncertainty">
+        Experts disagree widely on AGI timelines. We might see breakthroughs tomorrow or in decades.
+      </Callout>
+    </div>
+  }
+  right={
+    <div className="mt-8 space-y-4">
+      <div className="glass-card p-6">
+        <h4 className="font-bold mb-4 text-center">Signs of Progress Toward AGI</h4>
+        
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-xs">✓</span>
+            </div>
+            <span className="text-sm">Language understanding</span>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-xs">✓</span>
+            </div>
+            <span className="text-sm">Creative generation</span>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-xs">∼</span>
+            </div>
+            <span className="text-sm">Reasoning and planning</span>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-xs">∼</span>
+            </div>
+            <span className="text-sm">Multimodal understanding</span>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-xs">?</span>
+            </div>
+            <span className="text-sm">Autonomous goal-setting</span>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-xs">?</span>
+            </div>
+            <span className="text-sm">Self-improvement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+/>
+
+---
+
+## Societal Impact
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">How AI Will Change Everything</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold text-green-600 dark:text-green-400">✅ Positive Impacts</h4>
+      <ul className="text-sm space-y-2 text-muted-foreground">
+        <li>• Accelerated scientific discovery</li>
+        <li>• Personalized education</li>
+        <li>• Better healthcare</li>
+        <li>• Climate solutions</li>
+        <li>• Increased productivity</li>
+        <li>• Creative collaboration</li>
+      </ul>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold text-orange-600 dark:text-orange-400">⚠️ Challenges</h4>
+      <ul className="text-sm space-y-2 text-muted-foreground">
+        <li>• Job displacement</li>
+        <li>• Economic inequality</li>
+        <li>• Misinformation at scale</li>
+        <li>• Privacy concerns</li>
+        <li>• Dependency risks</li>
+        <li>• Social disruption</li>
+      </ul>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold text-red-600 dark:text-red-400">❌ Existential Risks</h4>
+      <ul className="text-sm space-y-2 text-muted-foreground">
+        <li>• Misaligned superintelligence</li>
+        <li>• Loss of human agency</li>
+        <li>• Concentration of power</li>
+        <li>• Unpredictable capabilities</li>
+        <li>• Value lock-in</li>
+        <li>• Human obsolescence</li>
+      </ul>
+    </div>
+  </div>
+  
+  <Callout type="info" title="Preparing for the Future">
+    The key is proactive preparation: education, policy, safety research, and ensuring AI development benefits everyone, not just a few.
+  </Callout>
+</div>
+
+---
+
+## What You Can Do
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">How to Prepare for an AI Future</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="space-y-4">
+      <h4 className="font-bold text-blue-600 dark:text-blue-400">🎓 Skills to Develop</h4>
+      <div className="space-y-3">
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">AI Literacy</h5>
+          <p className="text-sm text-muted-foreground">Understand how AI works and its limitations</p>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">Human-Centric Skills</h5>
+          <p className="text-sm text-muted-foreground">Creativity, empathy, complex reasoning, leadership</p>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">Adaptability</h5>
+          <p className="text-sm text-muted-foreground">Continuous learning and flexibility</p>
+        </div>
+      </div>
+    </div>
+    
+    <div className="space-y-4">
+      <h4 className="font-bold text-green-600 dark:text-green-400">🎨 Areas of Opportunity</h4>
+      <div className="space-y-3">
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">AI-Human Collaboration</h5>
+          <p className="text-sm text-muted-foreground">Learn to work effectively with AI tools</p>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">Ethics and Safety</h5>
+          <p className="text-sm text-muted-foreground">Help ensure AI is developed responsibly</p>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">Bridge Building</h5>
+          <p className="text-sm text-muted-foreground">Translate between technical and non-technical domains</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Stay Informed
+
+<div className="space-y-4">
+  <h3 className="text-xl font-bold text-center">Keep Up with AI Developments</h3>
+  
+  <div className="grid gap-4">
+    <DemoLink
+      href="https://www.anthropic.com/news"
+      title="AI Safety News"
+      description="Latest research and developments in AI alignment"
+      preview="Stay updated on progress toward safe, beneficial AI"
+      variant="large"
+    />
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DemoLink
+        href="https://aiimpacts.org/"
+        title="AI Impacts"
+        description="Research on AI capabilities and timelines"
+        preview="Data-driven analysis of AI progress and implications"
+      />
+      
+      <DemoLink
+        href="https://www.futureofhumanity.org/"
+        title="Future of Humanity Institute"
+        description="Research on existential risks and the long-term future"
+        preview="Academic research on how to navigate transformative technologies"
+      />
+    </div>
+  </div>
+</div>
+
+---
+
+<Callout type="success" title="The Future: Bright but Uncertain">
+  We're living through one of the most significant technological transitions in human history. The future of AI is still being written - and you can help shape it!
+</Callout>

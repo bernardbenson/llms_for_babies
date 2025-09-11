@@ -1,0 +1,203 @@
+---
+title: "Capabilities & Applications"
+section: 7
+duration: "4 minutes"
+objectives:
+  - "See what LLMs can do today"
+  - "Understand their strengths and limitations"
+  - "Explore real-world applications"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+
+<SectionHeader 
+  title="What LLMs Can Do"
+  subtitle="The Current State of AI Capabilities"
+  gradient="from-green-400 via-emerald-500 to-teal-600"
+/>
+
+---
+
+## Core Capabilities Today
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div className="glass-card p-6 space-y-4">
+    <h4 className="font-bold">📝 Text Generation</h4>
+    <ul className="text-sm space-y-2 text-muted-foreground">
+      <li>• Articles and blog posts</li>
+      <li>• Creative writing and poetry</li>
+      <li>• Marketing copy</li>
+      <li>• Academic papers</li>
+    </ul>
+  </div>
+  
+  <div className="glass-card p-6 space-y-4">
+    <h4 className="font-bold">💻 Code Generation</h4>
+    <ul className="text-sm space-y-2 text-muted-foreground">
+      <li>• Full applications</li>
+      <li>• Bug fixes</li>
+      <li>• Code explanation</li>
+      <li>• Multiple languages</li>
+    </ul>
+  </div>
+  
+  <div className="glass-card p-6 space-y-4">
+    <h4 className="font-bold">🧮 Analysis & Reasoning</h4>
+    <ul className="text-sm space-y-2 text-muted-foreground">
+      <li>• Data analysis</li>
+      <li>• Mathematical problems</li>
+      <li>• Logical reasoning</li>
+      <li>• Research synthesis</li>
+    </ul>
+  </div>
+  
+  <div className="glass-card p-6 space-y-4">
+    <h4 className="font-bold">🌍 Language Tasks</h4>
+    <ul className="text-sm space-y-2 text-muted-foreground">
+      <li>• Translation (100+ languages)</li>
+      <li>• Summarization</li>
+      <li>• Question answering</li>
+      <li>• Sentiment analysis</li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## Real-World Applications
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">LLMs in Action</h3>
+  
+  <div className="grid gap-4">
+    <DemoLink
+      href="https://github.com/features/copilot"
+      title="GitHub Copilot"
+      description="AI pair programmer that writes code with you"
+      preview="Autocompletes entire functions, suggests bug fixes, explains code"
+      variant="large"
+    />
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DemoLink
+        href="https://www.notion.so/product/ai"
+        title="Notion AI"
+        description="Writing assistant built into Notion"
+        preview="Helps brainstorm, write, edit, and summarize content"
+      />
+      
+      <DemoLink
+        href="https://www.grammarly.com/"
+        title="Grammarly"
+        description="AI writing assistant"
+        preview="Grammar checking, style suggestions, tone adjustment"
+      />
+    </div>
+  </div>
+</div>
+
+---
+
+## Strengths vs Limitations
+
+<TwoColumn
+  left={
+    <div className="space-y-4">
+      <h4 className="text-lg font-bold text-green-600 dark:text-green-400">✅ What They Excel At</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🎯</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Pattern Recognition</h5>
+            <p className="text-sm text-muted-foreground">Excellent at finding patterns in text and data</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🔄</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Format Conversion</h5>
+            <p className="text-sm text-muted-foreground">Transform text between different styles and formats</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">💡</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Creative Synthesis</h5>
+            <p className="text-sm text-muted-foreground">Combine ideas in novel and useful ways</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">📚</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Vast Knowledge</h5>
+            <p className="text-sm text-muted-foreground">Access to information across many domains</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  right={
+    <div className="space-y-4">
+      <h4 className="text-lg font-bold text-red-600 dark:text-red-400">❌ Current Limitations</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">📅</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">No Real-time Data</h5>
+            <p className="text-sm text-muted-foreground">Knowledge cutoff means outdated information</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🎲</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Hallucinations</h5>
+            <p className="text-sm text-muted-foreground">Can confidently generate false information</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🧮</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Math & Logic Gaps</h5>
+            <p className="text-sm text-muted-foreground">Struggles with precise calculations and formal logic</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🔒</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Context Limits</h5>
+            <p className="text-sm text-muted-foreground">Can only remember a limited conversation history</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+/>
+
+---
+
+<Callout type="success" title="Capabilities: Impressive but Imperfect">
+  LLMs excel at language tasks, creativity, and pattern recognition, but have significant limitations around accuracy, math, and real-time information. Use them as powerful tools, not infallible oracles!
+</Callout>

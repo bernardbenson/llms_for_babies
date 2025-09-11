@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263.4 70% 50.4%;
+    --radius: 0.75rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/20;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+/* Presentation-specific styles */
+@layer components {
+  .slide-container {
+    @apply relative min-h-screen w-full overflow-hidden;
+  }
+  
+  .slide-content {
+    @apply container mx-auto px-8 py-12 max-w-6xl;
+  }
+  
+  .slide-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent mb-8;
+  }
+  
+  .slide-subtitle {
+    @apply text-xl md:text-2xl text-muted-foreground mb-12;
+  }
+  
+  .prose-slide {
+    @apply prose prose-lg prose-invert max-w-none;
+  }
+  
+  .prose-slide h1 {
+    @apply text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent;
+  }
+  
+  .prose-slide h2 {
+    @apply text-3xl md:text-4xl font-semibold text-foreground;
+  }
+  
+  .prose-slide h3 {
+    @apply text-2xl md:text-3xl font-medium text-muted-foreground;
+  }
+  
+  .prose-slide p {
+    @apply text-lg leading-relaxed text-muted-foreground;
+  }
+  
+  .prose-slide li {
+    @apply text-lg leading-relaxed;
+  }
+  
+  .prose-slide code {
+    @apply px-2 py-1 bg-muted/50 rounded text-sm font-mono;
+  }
+  
+  .prose-slide pre {
+    @apply bg-muted/20 border border-border rounded-2xl p-6 overflow-x-auto;
+  }
+  
+  .prose-slide pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  /* Glassmorphism effects */
+  .glass {
+    @apply bg-background/10 backdrop-blur-md border border-border/50;
+  }
+  
+  .glass-card {
+    @apply glass rounded-2xl p-6 shadow-xl;
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-bg {
+    background: linear-gradient(135deg, 
+      hsl(var(--primary)) 0%, 
+      hsl(var(--primary) / 0.8) 25%, 
+      hsl(var(--secondary)) 50%, 
+      hsl(var(--accent)) 75%, 
+      hsl(var(--primary) / 0.6) 100%);
+  }
+  
+  .gradient-mesh {
+    background: radial-gradient(ellipse 80% 80% at 50% -20%, hsl(var(--primary) / 0.3), transparent),
+                radial-gradient(ellipse 80% 80% at 80% 60%, hsl(var(--accent) / 0.3), transparent),
+                radial-gradient(ellipse 80% 80% at 20% 80%, hsl(var(--secondary) / 0.3), transparent);
+  }
+}
+
+/* Motion and animation preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles for PDF export */
+@media print {
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+  
+  body {
+    @apply text-black bg-white;
+  }
+  
+  .slide-container {
+    @apply min-h-0 break-inside-avoid page-break-inside-avoid;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .slide-content {
+    @apply py-8;
+  }
+  
+  /* Ensure proper contrast for print */
+  .slide-title {
+    @apply text-black;
+    background: none;
+    -webkit-background-clip: unset;
+  }
+  
+  .prose-slide h1,
+  .prose-slide h2,
+  .prose-slide h3 {
+    @apply text-black;
+    background: none;
+    -webkit-background-clip: unset;
+  }
+  
+  .prose-slide p,
+  .prose-slide li {
+    @apply text-gray-800;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 80%;
+  }
+  
+  .glass,
+  .glass-card {
+    @apply bg-background border-2 border-foreground;
+  }
+}
