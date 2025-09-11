@@ -1,0 +1,445 @@
+---
+title: "Transformers Architecture"
+section: 4
+duration: "5 minutes"
+objectives:
+  - "Understand the Transformer architecture"
+  - "See how all the pieces fit together"
+  - "Learn why transformers revolutionized AI"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+import { TransformerBlock, TransformerArchitecture } from '@/components/diagrams/transformer-block'
+
+<SectionHeader 
+  title="Transformers"
+  subtitle="Attention Is All You Need"
+  gradient="from-violet-400 via-purple-500 to-indigo-600"
+/>
+
+---
+
+## The Revolutionary Paper
+
+<TwoColumn 
+  left={
+    <div className="space-y-6">
+      <div className="glass-card p-6 space-y-4">
+        <h3 className="text-xl font-bold">"Attention Is All You Need"</h3>
+        <p className="text-sm text-muted-foreground">
+          Published by Google Research in 2017
+        </p>
+        
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 bg-primary rounded-full"></span>
+            <span className="text-sm">Ashish Vaswani and team</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 bg-primary rounded-full"></span>
+            <span className="text-sm">60,000+ citations in 6 years</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 bg-primary rounded-full"></span>
+            <span className="text-sm">Foundation of modern LLMs</span>
+          </div>
+        </div>
+      </div>
+      
+      <Callout type="tip" title="The Big Insight">
+        What if we **only** used attention mechanisms? No recurrent networks, no convolutions - just attention all the way down.
+      </Callout>
+    </div>
+  }
+  right={
+    <div className="mt-8">
+      <TransformerArchitecture />
+    </div>
+  }
+/>
+
+---
+
+## The Transformer Building Block
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Let's Break Down One Transformer Layer</h3>
+  
+  <TransformerBlock 
+    interactive={true}
+    animated={true}
+    showLabels={true}
+  />
+</div>
+
+---
+
+## Key Components Explained
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">What Each Piece Does</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="space-y-6">
+      <div className="glass-card p-5 space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-cyan-100 dark:bg-cyan-900/30 rounded-full flex items-center justify-center">
+            <span className="text-lg">📊</span>
+          </div>
+          <h4 className="font-bold text-cyan-700 dark:text-cyan-400">Input Embeddings</h4>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Convert words to vectors + add position information
+        </p>
+        <div className="bg-cyan-50 dark:bg-cyan-950/50 p-2 rounded text-xs font-mono">
+          "hello" → [0.2, -0.1, 0.5, ...] + position_vector
+        </div>
+      </div>
+      
+      <div className="glass-card p-5 space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+            <span className="text-lg">🎯</span>
+          </div>
+          <h4 className="font-bold text-purple-700 dark:text-purple-400">Multi-Head Attention</h4>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Multiple attention mechanisms working in parallel
+        </p>
+        <div className="bg-purple-50 dark:bg-purple-950/50 p-2 rounded text-xs">
+          Each head focuses on different types of relationships
+        </div>
+      </div>
+      
+      <div className="glass-card p-5 space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center">
+            <span className="text-lg">➕</span>
+          </div>
+          <h4 className="font-bold text-amber-700 dark:text-amber-400">Add & Norm</h4>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Residual connections + layer normalization
+        </p>
+        <div className="bg-amber-50 dark:bg-amber-950/50 p-2 rounded text-xs">
+          output = LayerNorm(input + attention(input))
+        </div>
+      </div>
+    </div>
+    
+    <div className="space-y-6">
+      <div className="glass-card p-5 space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center">
+            <span className="text-lg">🧠</span>
+          </div>
+          <h4 className="font-bold text-emerald-700 dark:text-emerald-400">Feed Forward Network</h4>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Two-layer neural network processes each position
+        </p>
+        <div className="bg-emerald-50 dark:bg-emerald-950/50 p-2 rounded text-xs">
+          FFN(x) = ReLU(xW₁ + b₁)W₂ + b₂
+        </div>
+      </div>
+      
+      <div className="glass-card p-5 space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-rose-100 dark:bg-rose-900/30 rounded-full flex items-center justify-center">
+            <span className="text-lg">🚀</span>
+          </div>
+          <h4 className="font-bold text-rose-700 dark:text-rose-400">Output Layer</h4>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Final projection to vocabulary probabilities
+        </p>
+        <div className="bg-rose-50 dark:bg-rose-950/50 p-2 rounded text-xs">
+          50,000 dimensional vector → probability per word
+        </div>
+      </div>
+      
+      <Callout type="info" title="Scaling Up">
+        Modern models use 96+ layers, 12,288 dimensions, and 175B+ parameters!
+      </Callout>
+    </div>
+  </div>
+</div>
+
+---
+
+## Why Transformers Work So Well
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">The Magic Combination</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="space-y-4">
+      <h4 className="text-lg font-bold text-green-600 dark:text-green-400">✅ What They Solved</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">⚡</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Parallelization</h5>
+            <p className="text-sm text-muted-foreground">Process all positions simultaneously</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🔗</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Long-range Dependencies</h5>
+            <p className="text-sm text-muted-foreground">Connect any word to any other word directly</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">📈</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Scalability</h5>
+            <p className="text-sm text-muted-foreground">Performance improves with more data and compute</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🎯</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Interpretability</h5>
+            <p className="text-sm text-muted-foreground">Can visualize what the model is attending to</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div className="space-y-4">
+      <h4 className="text-lg font-bold text-orange-600 dark:text-orange-400">⚠️ The Trade-offs</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">💾</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Memory Usage</h5>
+            <p className="text-sm text-muted-foreground">Attention scales quadratically with sequence length</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">⚡</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Computational Cost</h5>
+            <p className="text-sm text-muted-foreground">Expensive to train and run large models</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">📊</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Data Hunger</h5>
+            <p className="text-sm text-muted-foreground">Need massive datasets to train effectively</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-xs">🔒</span>
+          </div>
+          <div>
+            <h5 className="font-semibold">Context Limits</h5>
+            <p className="text-sm text-muted-foreground">Fixed maximum sequence length (though getting longer!)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Encoder vs. Decoder vs. Encoder-Decoder
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Three Flavors of Transformers</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <div className="text-center">
+        <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span className="text-2xl">📥</span>
+        </div>
+        <h4 className="font-bold text-blue-700 dark:text-blue-400">Encoder-Only</h4>
+        <p className="text-xs text-muted-foreground">BERT, RoBERTa</p>
+      </div>
+      
+      <div className="space-y-2">
+        <p className="text-sm"><strong>Good for:</strong> Understanding tasks</p>
+        <ul className="text-xs space-y-1 text-muted-foreground">
+          <li>• Classification</li>
+          <li>• Question answering</li>
+          <li>• Sentiment analysis</li>
+          <li>• Entity recognition</li>
+        </ul>
+      </div>
+      
+      <div className="bg-blue-50 dark:bg-blue-950/50 p-3 rounded text-xs">
+        <strong>Example:</strong><br/>
+        Input: "This movie is great!"<br/>
+        Output: Positive sentiment
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <div className="text-center">
+        <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span className="text-2xl">📤</span>
+        </div>
+        <h4 className="font-bold text-green-700 dark:text-green-400">Decoder-Only</h4>
+        <p className="text-xs text-muted-foreground">GPT-3, GPT-4, ChatGPT</p>
+      </div>
+      
+      <div className="space-y-2">
+        <p className="text-sm"><strong>Good for:</strong> Generation tasks</p>
+        <ul className="text-xs space-y-1 text-muted-foreground">
+          <li>• Text completion</li>
+          <li>• Creative writing</li>
+          <li>• Code generation</li>
+          <li>• Conversation</li>
+        </ul>
+      </div>
+      
+      <div className="bg-green-50 dark:bg-green-950/50 p-3 rounded text-xs">
+        <strong>Example:</strong><br/>
+        Input: "Once upon a time"<br/>
+        Output: "there was a brave knight..."
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <div className="text-center">
+        <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span className="text-2xl">🔄</span>
+        </div>
+        <h4 className="font-bold text-purple-700 dark:text-purple-400">Encoder-Decoder</h4>
+        <p className="text-xs text-muted-foreground">T5, BART</p>
+      </div>
+      
+      <div className="space-y-2">
+        <p className="text-sm"><strong>Good for:</strong> Transformation tasks</p>
+        <ul className="text-xs space-y-1 text-muted-foreground">
+          <li>• Translation</li>
+          <li>• Summarization</li>
+          <li>• Paraphrasing</li>
+          <li>• Text-to-text tasks</li>
+        </ul>
+      </div>
+      
+      <div className="bg-purple-50 dark:bg-purple-950/50 p-3 rounded text-xs">
+        <strong>Example:</strong><br/>
+        Input: "Translate: Hello world"<br/>
+        Output: "Bonjour le monde"
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## The Transformer Family Tree
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">From 2017 to Today</h3>
+  
+  <div className="space-y-4">
+    <div className="flex items-center gap-4 p-4 glass-card">
+      <div className="w-16 text-sm font-bold text-muted-foreground">2017</div>
+      <div className="flex-1">
+        <h4 className="font-bold">Original Transformer</h4>
+        <p className="text-sm text-muted-foreground">The paper that started it all - machine translation focus</p>
+      </div>
+    </div>
+    
+    <div className="flex items-center gap-4 p-4 glass-card">
+      <div className="w-16 text-sm font-bold text-muted-foreground">2018</div>
+      <div className="flex-1">
+        <h4 className="font-bold">BERT & GPT-1</h4>
+        <p className="text-sm text-muted-foreground">Bidirectional encoder and autoregressive decoder approaches</p>
+      </div>
+    </div>
+    
+    <div className="flex items-center gap-4 p-4 glass-card">
+      <div className="w-16 text-sm font-bold text-muted-foreground">2019</div>
+      <div className="flex-1">
+        <h4 className="font-bold">GPT-2, RoBERTa, T5</h4>
+        <p className="text-sm text-muted-foreground">Scaling up and improving training methods</p>
+      </div>
+    </div>
+    
+    <div className="flex items-center gap-4 p-4 glass-card">
+      <div className="w-16 text-sm font-bold text-muted-foreground">2020</div>
+      <div className="flex-1">
+        <h4 className="font-bold">GPT-3</h4>
+        <p className="text-sm text-muted-foreground">175B parameters - the breakthrough to general capability</p>
+      </div>
+    </div>
+    
+    <div className="flex items-center gap-4 p-4 glass-card">
+      <div className="w-16 text-sm font-bold text-muted-foreground">2022+</div>
+      <div className="flex-1">
+        <h4 className="font-bold">ChatGPT, GPT-4, Claude, Llama</h4>
+        <p className="text-sm text-muted-foreground">Conversational AI and multimodal capabilities</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Interactive Transformer Demos
+
+<div className="space-y-4">
+  <h3 className="text-xl font-bold text-center">Explore the Architecture</h3>
+  
+  <div className="grid gap-4">
+    <DemoLink
+      href="https://transformer-circuits.pub/"
+      title="Anthropic's Transformer Circuits"
+      description="Research into transformer interpretability"
+      preview="Deep analysis of what's happening inside transformer models"
+      variant="large"
+    />
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DemoLink
+        href="https://jalammar.github.io/illustrated-transformer/"
+        title="The Illustrated Transformer"
+        description="Jay Alammar's famous visual guide"
+        preview="Step-by-step walkthrough of the transformer architecture"
+      />
+      
+      <DemoLink
+        href="https://huggingface.co/learn/nlp-course/chapter1/4"
+        title="Hugging Face NLP Course"
+        description="Interactive transformer tutorials"
+        preview="Hands-on experience with different transformer models"
+      />
+    </div>
+  </div>
+</div>
+
+---
+
+<Callout type="success" title="Transformers: The Foundation">
+  The transformer architecture combines attention mechanisms with clever engineering to create models that can understand and generate human language. Every modern LLM builds on this foundation!
+</Callout>

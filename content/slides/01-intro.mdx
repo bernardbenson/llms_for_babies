@@ -1,0 +1,162 @@
+---
+title: "Introduction to Large Language Models"
+section: 1
+duration: "3 minutes"
+objectives:
+  - "Understand what LLMs are and why they matter"
+  - "Learn about the current AI landscape"
+  - "Preview the journey ahead"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+import { SimpleNeuralNetwork } from '@/components/diagrams/neural-network'
+
+<SectionHeader 
+  title="Large Language Models for Everyone"
+  subtitle="Understanding the AI Revolution"
+  gradient="from-cyan-400 via-blue-500 to-purple-600"
+/>
+
+---
+
+## What Are Large Language Models?
+
+<TwoColumn 
+  left={
+    <div className="space-y-6">
+      <h3 className="text-2xl font-bold">Think of LLMs as...</h3>
+      <div className="space-y-4">
+        <div className="p-4 bg-primary/10 rounded-lg">
+          <h4 className="font-semibold text-primary">🧠 Digital Brains</h4>
+          <p className="text-sm mt-2">That have read most of the internet</p>
+        </div>
+        <div className="p-4 bg-primary/10 rounded-lg">
+          <h4 className="font-semibold text-primary">📚 Universal Translators</h4>
+          <p className="text-sm mt-2">Between human ideas and computer code</p>
+        </div>
+        <div className="p-4 bg-primary/10 rounded-lg">
+          <h4 className="font-semibold text-primary">🎯 Pattern Experts</h4>
+          <p className="text-sm mt-2">That predict what comes next</p>
+        </div>
+      </div>
+    </div>
+  }
+  right={
+    <SimpleNeuralNetwork 
+      className="mt-8" 
+      autoDemo={true}
+      showLabels={true}
+    />
+  }
+/>
+
+---
+
+## The Current AI Moment
+
+<div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+  <div className="text-center p-4 glass-card">
+    <div className="text-3xl font-bold text-primary">175B</div>
+    <div className="text-sm text-muted-foreground">Parameters in GPT-3</div>
+  </div>
+  <div className="text-center p-4 glass-card">
+    <div className="text-3xl font-bold text-primary">100M+</div>
+    <div className="text-sm text-muted-foreground">ChatGPT users</div>
+  </div>
+  <div className="text-center p-4 glass-card">
+    <div className="text-3xl font-bold text-primary">$100B+</div>
+    <div className="text-sm text-muted-foreground">AI investment</div>
+  </div>
+  <div className="text-center p-4 glass-card">
+    <div className="text-3xl font-bold text-primary">2022</div>
+    <div className="text-sm text-muted-foreground">The breakthrough year</div>
+  </div>
+</div>
+
+<Callout type="info" title="Why Now?">
+  Three key factors came together: **massive computing power**, **huge datasets**, and **transformer architecture** breakthroughs.
+</Callout>
+
+---
+
+## Try It Yourself
+
+<div className="space-y-6">
+  <h3 className="text-2xl font-bold text-center">Experience LLMs in Action</h3>
+  
+  <div className="grid gap-4">
+    <DemoLink
+      href="https://chat.openai.com"
+      title="ChatGPT"
+      description="OpenAI's flagship conversational AI"
+      preview="Ask it to explain quantum physics like you're 5, write a poem, or help debug code"
+      variant="large"
+    />
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DemoLink
+        href="https://claude.ai"
+        title="Claude"
+        description="Anthropic's helpful, harmless AI assistant"
+        preview="Great for analysis, writing, and coding tasks"
+      />
+      
+      <DemoLink
+        href="https://huggingface.co/spaces"
+        title="Hugging Face Spaces"
+        description="Free ML models and demos"
+        preview="Try dozens of different models and see what's possible"
+      />
+    </div>
+  </div>
+</div>
+
+---
+
+## Our Journey Today
+
+<div className="space-y-8">
+  <div className="text-center">
+    <h3 className="text-2xl font-bold mb-4">From Zero to Hero in 45 Minutes</h3>
+    <p className="text-muted-foreground">No PhD required – just curiosity!</p>
+  </div>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="glass-card p-6 space-y-3">
+      <div className="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-full flex items-center justify-center">
+        <span className="text-2xl">🧠</span>
+      </div>
+      <h4 className="font-semibold">The Basics</h4>
+      <p className="text-sm text-muted-foreground">
+        Neural networks, attention, and transformers explained simply
+      </p>
+    </div>
+    
+    <div className="glass-card p-6 space-y-3">
+      <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+        <span className="text-2xl">⚙️</span>
+      </div>
+      <h4 className="font-semibold">How They Work</h4>
+      <p className="text-sm text-muted-foreground">
+        Training, fine-tuning, and why they're so powerful
+      </p>
+    </div>
+    
+    <div className="glass-card p-6 space-y-3">
+      <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center">
+        <span className="text-2xl">🚀</span>
+      </div>
+      <h4 className="font-semibold">The Future</h4>
+      <p className="text-sm text-muted-foreground">
+        What's coming next and how to prepare
+      </p>
+    </div>
+  </div>
+</div>
+
+---
+
+<Callout type="tip" title="Ready to Start?">
+  Buckle up! We're about to explore the most exciting technology of our time. By the end, you'll understand not just **what** LLMs are, but **how** they work and **why** they're revolutionary.
+</Callout>

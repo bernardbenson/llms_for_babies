@@ -1,0 +1,363 @@
+---
+title: "Fine-tuning & Specialization"
+section: 9
+duration: "3 minutes"
+objectives:
+  - "Understand fine-tuning vs prompting"
+  - "Learn when to fine-tune"
+  - "See real examples of specialized models"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+
+<SectionHeader 
+  title="Fine-tuning"
+  subtitle="Teaching Old Models New Tricks"
+  gradient="from-purple-400 via-violet-500 to-indigo-600"
+/>
+
+---
+
+## What Is Fine-tuning?
+
+<TwoColumn
+  left={
+    <div className="space-y-6">
+      <h3 className="text-xl font-bold">It's Like Specialized Training</h3>
+      
+      <div className="space-y-4">
+        <div className="glass-card p-4">
+          <h4 className="font-semibold mb-2">🧠 Base Model</h4>
+          <p className="text-sm text-muted-foreground">
+            General knowledge from internet text
+          </p>
+        </div>
+        
+        <div className="flex justify-center">
+          <div className="text-2xl">⬇️</div>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h4 className="font-semibold mb-2">📚 Domain Data</h4>
+          <p className="text-sm text-muted-foreground">
+            Specialized examples from your field
+          </p>
+        </div>
+        
+        <div className="flex justify-center">
+          <div className="text-2xl">⬇️</div>
+        </div>
+        
+        <div className="glass-card p-4 border-2 border-primary/50">
+          <h4 className="font-semibold mb-2 text-primary">🎯 Specialized Model</h4>
+          <p className="text-sm text-muted-foreground">
+            Expert in your specific domain
+          </p>
+        </div>
+      </div>
+    </div>
+  }
+  right={
+    <div className="mt-8 space-y-4">
+      <div className="glass-card p-6">
+        <h4 className="font-bold mb-4 text-center">Fine-tuning vs Prompting</h4>
+        
+        <div className="space-y-4">
+          <div className="border-l-4 border-l-blue-400 pl-4">
+            <h5 className="font-semibold text-blue-600 dark:text-blue-400">Prompting</h5>
+            <ul className="text-sm space-y-1 text-muted-foreground">
+              <li>• Quick and flexible</li>
+              <li>• Works immediately</li>
+              <li>• Limited customization</li>
+              <li>• Uses context window</li>
+            </ul>
+          </div>
+          
+          <div className="border-l-4 border-l-green-400 pl-4">
+            <h5 className="font-semibold text-green-600 dark:text-green-400">Fine-tuning</h5>
+            <ul className="text-sm space-y-1 text-muted-foreground">
+              <li>• Deep specialization</li>
+              <li>• Requires training data</li>
+              <li>• Takes time and resources</li>
+              <li>• Changes model behavior</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <Callout type="info" title="When to Fine-tune">
+        Consider fine-tuning when you need consistent behavior, have lots of domain-specific data, or prompting isn't getting the results you need.
+      </Callout>
+    </div>
+  }
+/>
+
+---
+
+## Types of Fine-tuning
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">Different Approaches for Different Needs</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto">
+        <span className="text-2xl">🎯</span>
+      </div>
+      <h4 className="font-bold text-blue-600 dark:text-blue-400 text-center">Task-Specific</h4>
+      <p className="text-sm text-muted-foreground text-center">
+        Train for a specific task like classification or generation
+      </p>
+      <div className="bg-blue-50 dark:bg-blue-950/30 p-3 rounded text-xs">
+        <strong>Example:</strong> Email spam detection, sentiment analysis, code completion
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
+        <span className="text-2xl">🏢</span>
+      </div>
+      <h4 className="font-bold text-green-600 dark:text-green-400 text-center">Domain-Specific</h4>
+      <p className="text-sm text-muted-foreground text-center">
+        Adapt to a particular industry or field
+      </p>
+      <div className="bg-green-50 dark:bg-green-950/30 p-3 rounded text-xs">
+        <strong>Example:</strong> Legal document analysis, medical diagnosis, financial reports
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto">
+        <span className="text-2xl">🎨</span>
+      </div>
+      <h4 className="font-bold text-purple-600 dark:text-purple-400 text-center">Style-Specific</h4>
+      <p className="text-sm text-muted-foreground text-center">
+        Adopt a particular writing style or personality
+      </p>
+      <div className="bg-purple-50 dark:bg-purple-950/30 p-3 rounded text-xs">
+        <strong>Example:</strong> Brand voice, academic writing, creative storytelling
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## The Fine-tuning Process
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">How to Create a Specialized Model</h3>
+  
+  <div className="space-y-4">
+    <div className="glass-card p-6 border-l-4 border-l-blue-500">
+      <div className="flex items-center gap-4">
+        <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+          <span className="font-bold text-blue-600 dark:text-blue-400">1</span>
+        </div>
+        <div>
+          <h4 className="font-bold text-blue-600 dark:text-blue-400">Prepare Training Data</h4>
+          <p className="text-sm text-muted-foreground">Collect and format your domain-specific examples</p>
+        </div>
+      </div>
+      <div className="ml-12 mt-3">
+        <ul className="text-sm space-y-1 text-muted-foreground">
+          <li>• 100-10,000+ examples</li>
+          <li>• Consistent format</li>
+          <li>• High quality, representative data</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 border-l-4 border-l-green-500">
+      <div className="flex items-center gap-4">
+        <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+          <span className="font-bold text-green-600 dark:text-green-400">2</span>
+        </div>
+        <div>
+          <h4 className="font-bold text-green-600 dark:text-green-400">Choose Base Model</h4>
+          <p className="text-sm text-muted-foreground">Pick the foundation model to build upon</p>
+        </div>
+      </div>
+      <div className="ml-12 mt-3">
+        <ul className="text-sm space-y-1 text-muted-foreground">
+          <li>• GPT-3.5, GPT-4, Llama 2</li>
+          <li>• Consider size vs cost</li>
+          <li>• Check licensing terms</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 border-l-4 border-l-orange-500">
+      <div className="flex items-center gap-4">
+        <div className="w-8 h-8 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+          <span className="font-bold text-orange-600 dark:text-orange-400">3</span>
+        </div>
+        <div>
+          <h4 className="font-bold text-orange-600 dark:text-orange-400">Train the Model</h4>
+          <p className="text-sm text-muted-foreground">Run the fine-tuning process</p>
+        </div>
+      </div>
+      <div className="ml-12 mt-3">
+        <ul className="text-sm space-y-1 text-muted-foreground">
+          <li>• Set hyperparameters</li>
+          <li>• Monitor training progress</li>
+          <li>• Prevent overfitting</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 border-l-4 border-l-purple-500">
+      <div className="flex items-center gap-4">
+        <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+          <span className="font-bold text-purple-600 dark:text-purple-400">4</span>
+        </div>
+        <div>
+          <h4 className="font-bold text-purple-600 dark:text-purple-400">Evaluate & Deploy</h4>
+          <p className="text-sm text-muted-foreground">Test performance and put into production</p>
+        </div>
+      </div>
+      <div className="ml-12 mt-3">
+        <ul className="text-sm space-y-1 text-muted-foreground">
+          <li>• Test on held-out data</li>
+          <li>• Compare to base model</li>
+          <li>• Deploy with monitoring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Real-World Examples
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Successful Fine-tuned Models</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🏥 Medical AI</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Fine-tuned on medical literature and clinical notes
+      </p>
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+          <span className="text-sm">Diagnose conditions from symptoms</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+          <span className="text-sm">Explain medical concepts to patients</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+          <span className="text-sm">Assist with treatment planning</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">⚖️ Legal Assistant</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Trained on legal documents and case law
+      </p>
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+          <span className="text-sm">Contract review and analysis</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+          <span className="text-sm">Legal research and citations</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+          <span className="text-sm">Draft legal documents</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">💰 Financial Analyst</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Specialized for financial data and markets
+      </p>
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+          <span className="text-sm">Earnings report analysis</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+          <span className="text-sm">Risk assessment</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+          <span className="text-sm">Investment recommendations</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🎨 Creative Writer</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Trained on specific genres or author styles
+      </p>
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+          <span className="text-sm">Genre-specific storytelling</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+          <span className="text-sm">Character voice consistency</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+          <span className="text-sm">Plot development assistance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Try Fine-tuning Yourself
+
+<div className="space-y-4">
+  <h3 className="text-xl font-bold text-center">Get Started with Fine-tuning</h3>
+  
+  <div className="grid gap-4">
+    <DemoLink
+      href="https://platform.openai.com/docs/guides/fine-tuning"
+      title="OpenAI Fine-tuning Guide"
+      description="Official documentation and tutorials"
+      preview="Step-by-step guide to fine-tuning GPT-3.5 and GPT-4"
+      variant="large"
+    />
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DemoLink
+        href="https://huggingface.co/docs/transformers/training"
+        title="Hugging Face Training"
+        description="Open source fine-tuning tools"
+        preview="Train and deploy your own models with Python"
+      />
+      
+      <DemoLink
+        href="https://www.anyscale.com/blog/fine-tuning-llms-lora-or-full-parameter-an-in-depth-analysis-with-llama-2"
+        title="LoRA Fine-tuning"
+        description="Efficient fine-tuning techniques"
+        preview="Learn about parameter-efficient methods like LoRA and QLoRA"
+      />
+    </div>
+  </div>
+</div>
+
+---
+
+<Callout type="success" title="Fine-tuning: Specialization at Scale">
+  Fine-tuning transforms general language models into domain experts. While it requires more resources than prompting, it can deliver dramatically better results for specialized tasks!
+</Callout>

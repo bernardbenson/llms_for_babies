@@ -1,0 +1,252 @@
+---
+title: "Scale and Emergent Abilities"
+section: 6
+duration: "3 minutes"
+objectives:
+  - "Understand scaling laws in AI"
+  - "See how capabilities emerge with size"
+  - "Learn about current model sizes"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+
+<SectionHeader 
+  title="Scale & Emergence"
+  subtitle="More Parameters = More Magic"
+  gradient="from-cyan-400 via-blue-500 to-purple-600"
+/>
+
+---
+
+## The Scaling Revolution
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">Size Matters in AI</h3>
+  
+  <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+    <div className="glass-card p-4 text-center">
+      <div className="text-lg font-bold text-muted-foreground mb-1">GPT-1</div>
+      <div className="text-2xl font-bold text-blue-500">117M</div>
+      <div className="text-xs text-muted-foreground">2018</div>
+    </div>
+    
+    <div className="glass-card p-4 text-center">
+      <div className="text-lg font-bold text-muted-foreground mb-1">GPT-2</div>
+      <div className="text-2xl font-bold text-green-500">1.5B</div>
+      <div className="text-xs text-muted-foreground">2019</div>
+    </div>
+    
+    <div className="glass-card p-4 text-center">
+      <div className="text-lg font-bold text-muted-foreground mb-1">GPT-3</div>
+      <div className="text-2xl font-bold text-orange-500">175B</div>
+      <div className="text-xs text-muted-foreground">2020</div>
+    </div>
+    
+    <div className="glass-card p-4 text-center">
+      <div className="text-lg font-bold text-muted-foreground mb-1">GPT-4</div>
+      <div className="text-2xl font-bold text-red-500">1.7T</div>
+      <div className="text-xs text-muted-foreground">2023</div>
+    </div>
+    
+    <div className="glass-card p-4 text-center">
+      <div className="text-lg font-bold text-muted-foreground mb-1">Future</div>
+      <div className="text-2xl font-bold text-purple-500">10T+?</div>
+      <div className="text-xs text-muted-foreground">2024+</div>
+    </div>
+  </div>
+  
+  <Callout type="info" title="Scaling Laws">
+    Performance improves predictably with more parameters, data, and compute - but the improvements are **exponential** in capability!
+  </Callout>
+</div>
+
+---
+
+## Emergent Abilities Across Scale
+
+<TwoColumn
+  left={
+    <div className="space-y-6">
+      <h3 className="text-xl font-bold">What Emerges at Different Sizes</h3>
+      
+      <div className="space-y-4">
+        <div className="glass-card p-4 border-l-4 border-l-blue-400">
+          <h4 className="font-bold text-blue-600 dark:text-blue-400 mb-2">~100M Parameters</h4>
+          <ul className="text-sm space-y-1 text-muted-foreground">
+            <li>• Basic grammar</li>
+            <li>• Simple completions</li>
+            <li>• Memorized facts</li>
+          </ul>
+        </div>
+        
+        <div className="glass-card p-4 border-l-4 border-l-green-400">
+          <h4 className="font-bold text-green-600 dark:text-green-400 mb-2">~1B Parameters</h4>
+          <ul className="text-sm space-y-1 text-muted-foreground">
+            <li>• Coherent paragraphs</li>
+            <li>• Basic reasoning</li>
+            <li>• Simple math</li>
+          </ul>
+        </div>
+        
+        <div className="glass-card p-4 border-l-4 border-l-orange-400">
+          <h4 className="font-bold text-orange-600 dark:text-orange-400 mb-2">~100B Parameters</h4>
+          <ul className="text-sm space-y-1 text-muted-foreground">
+            <li>• Few-shot learning</li>
+            <li>• Creative writing</li>
+            <li>• Code generation</li>
+            <li>• Translation</li>
+          </ul>
+        </div>
+        
+        <div className="glass-card p-4 border-l-4 border-l-red-400">
+          <h4 className="font-bold text-red-600 dark:text-red-400 mb-2">~1T+ Parameters</h4>
+          <ul className="text-sm space-y-1 text-muted-foreground">
+            <li>• Complex reasoning</li>
+            <li>• Tool usage</li>
+            <li>• Multi-modal understanding</li>
+            <li>• Specialized expertise</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  }
+  right={
+    <div className="mt-8 space-y-6">
+      <div className="glass-card p-6">
+        <h4 className="font-bold mb-4 text-center">The Emergence Timeline</h4>
+        
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+            <span className="text-sm">GPT-1: "The cat sat"</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+            <span className="text-sm">GPT-2: "Write a story about cats"</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
+            <span className="text-sm">GPT-3: "Explain quantum physics"</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+            <span className="text-sm">GPT-4: "Plan my vacation, book hotels, and write emails"</span>
+          </div>
+        </div>
+        
+        <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-lg">
+          <p className="text-sm text-center font-medium">
+            Each jump in scale unlocks qualitatively new capabilities
+          </p>
+        </div>
+      </div>
+    </div>
+  }
+/>
+
+---
+
+## Current State of the Art
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Today's Largest Models</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🏆 GPT-4</h4>
+      <div className="space-y-2">
+        <p className="text-sm"><strong>Parameters:</strong> ~1.7 trillion</p>
+        <p className="text-sm"><strong>Capabilities:</strong> Multimodal (text + vision)</p>
+        <p className="text-sm"><strong>Context:</strong> 128K tokens</p>
+        <p className="text-sm"><strong>Specialty:</strong> Reasoning, coding, creative tasks</p>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🤖 Claude 3</h4>
+      <div className="space-y-2">
+        <p className="text-sm"><strong>Parameters:</strong> Undisclosed</p>
+        <p className="text-sm"><strong>Capabilities:</strong> Long context, analysis</p>
+        <p className="text-sm"><strong>Context:</strong> 200K tokens</p>
+        <p className="text-sm"><strong>Specialty:</strong> Safety, helpfulness, accuracy</p>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🦙 Llama 2</h4>
+      <div className="space-y-2">
+        <p className="text-sm"><strong>Parameters:</strong> Up to 70 billion</p>
+        <p className="text-sm"><strong>Capabilities:</strong> Open source</p>
+        <p className="text-sm"><strong>Context:</strong> 4K tokens</p>
+        <p className="text-sm"><strong>Specialty:</strong> Community, customization</p>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🧠 PaLM 2</h4>
+      <div className="space-y-2">
+        <p className="text-sm"><strong>Parameters:</strong> 340 billion</p>
+        <p className="text-sm"><strong>Capabilities:</strong> Multilingual</p>
+        <p className="text-sm"><strong>Context:</strong> Variable</p>
+        <p className="text-sm"><strong>Specialty:</strong> Code, math, multilingual</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## The Cost of Scale
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">What It Takes to Build These Models</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="space-y-4">
+      <h4 className="font-bold text-red-600 dark:text-red-400">💰 Financial Cost</h4>
+      <div className="space-y-3">
+        <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-950/30 rounded">
+          <span className="text-sm">GPT-3 Training</span>
+          <span className="font-bold">$4.6M</span>
+        </div>
+        <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-950/30 rounded">
+          <span className="text-sm">GPT-4 Estimate</span>
+          <span className="font-bold">$100M+</span>
+        </div>
+        <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-950/30 rounded">
+          <span className="text-sm">Per Query Cost</span>
+          <span className="font-bold">$0.002-0.12</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="space-y-4">
+      <h4 className="font-bold text-orange-600 dark:text-orange-400">🌍 Environmental Cost</h4>
+      <div className="space-y-3">
+        <div className="flex justify-between items-center p-3 bg-orange-50 dark:bg-orange-950/30 rounded">
+          <span className="text-sm">Training Energy</span>
+          <span className="font-bold">1,287 MWh</span>
+        </div>
+        <div className="flex justify-between items-center p-3 bg-orange-50 dark:bg-orange-950/30 rounded">
+          <span className="text-sm">CO₂ Emissions</span>
+          <span className="font-bold">552 tons</span>
+        </div>
+        <div className="flex justify-between items-center p-3 bg-orange-50 dark:bg-orange-950/30 rounded">
+          <span className="text-sm">Equivalent</span>
+          <span className="font-bold">120 flights NYC→SF</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <Callout type="warning" title="The Efficiency Challenge">
+    While models get more capable with scale, they also become much more expensive and energy-intensive. Research into efficient architectures is crucial!
+  </Callout>
+</div>
+
+---
+
+<Callout type="success" title="Scale: The Path to AGI?">
+  Scaling up models consistently unlocks new emergent capabilities. We may be on a path where sufficient scale leads to artificial general intelligence - but at what cost?
+</Callout>

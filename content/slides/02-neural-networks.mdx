@@ -1,0 +1,291 @@
+---
+title: "Neural Networks Basics"
+section: 2
+duration: "4 minutes"
+objectives:
+  - "Understand what neural networks are"
+  - "See how they learn patterns"
+  - "Connect to human brain analogies"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+import { SimpleNeuralNetwork, LayeredNetwork } from '@/components/diagrams/neural-network'
+
+<SectionHeader 
+  title="Neural Networks"
+  subtitle="The Building Blocks of AI"
+  gradient="from-pink-400 via-red-500 to-orange-600"
+/>
+
+---
+
+## What Is a Neural Network?
+
+<TwoColumn 
+  left={
+    <div className="space-y-6">
+      <h3 className="text-xl font-bold">It's Like Your Brain, But Simpler</h3>
+      
+      <div className="space-y-4">
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 bg-cyan-100 dark:bg-cyan-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-sm">🧠</span>
+          </div>
+          <div>
+            <h4 className="font-semibold">Neurons</h4>
+            <p className="text-sm text-muted-foreground">Simple units that receive, process, and send signals</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-sm">🔗</span>
+          </div>
+          <div>
+            <h4 className="font-semibold">Connections</h4>
+            <p className="text-sm text-muted-foreground">Links between neurons with different strengths (weights)</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-sm">⚡</span>
+          </div>
+          <div>
+            <h4 className="font-semibold">Layers</h4>
+            <p className="text-sm text-muted-foreground">Groups of neurons that work together</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  right={
+    <SimpleNeuralNetwork 
+      className="mt-4" 
+      interactive={true}
+      showLabels={true}
+    />
+  }
+/>
+
+---
+
+## How Do They Learn?
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">Learning is Pattern Matching</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="glass-card p-6 text-center space-y-4">
+      <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto">
+        <span className="text-2xl">📊</span>
+      </div>
+      <h4 className="font-bold">1. See Examples</h4>
+      <p className="text-sm text-muted-foreground">
+        Show the network lots of examples: "This is a cat", "This is a dog"
+      </p>
+    </div>
+    
+    <div className="glass-card p-6 text-center space-y-4">
+      <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto">
+        <span className="text-2xl">🎯</span>
+      </div>
+      <h4 className="font-bold">2. Make Guesses</h4>
+      <p className="text-sm text-muted-foreground">
+        Network makes predictions and gets told if it's right or wrong
+      </p>
+    </div>
+    
+    <div className="glass-card p-6 text-center space-y-4">
+      <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
+        <span className="text-2xl">🔧</span>
+      </div>
+      <h4 className="font-bold">3. Adjust Weights</h4>
+      <p className="text-sm text-muted-foreground">
+        Gradually tune connections to improve accuracy
+      </p>
+    </div>
+  </div>
+</div>
+
+---
+
+## A Simple Example: Recognizing Handwritten Digits
+
+<TwoColumn 
+  left={
+    <div className="space-y-4">
+      <h3 className="text-xl font-bold">The MNIST Challenge</h3>
+      
+      <div className="bg-muted/30 p-4 rounded-lg">
+        <h4 className="font-semibold mb-2">Input: 28x28 pixel image</h4>
+        <div className="grid grid-cols-8 gap-1 max-w-32">
+          {Array.from({ length: 64 }, (_, i) => (
+            <div 
+              key={i} 
+              className={`aspect-square rounded-sm ${
+                [10, 11, 18, 19, 26, 27, 34, 35, 42, 43, 50, 51].includes(i)
+                  ? 'bg-foreground' 
+                  : 'bg-muted'
+              }`}
+            />
+          ))}
+        </div>
+        <p className="text-xs text-muted-foreground mt-2">
+          This looks like a "1" to us...
+        </p>
+      </div>
+      
+      <div className="space-y-2">
+        <h4 className="font-semibold">Output: Probability for each digit</h4>
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="text-sm w-4">0:</span>
+            <div className="flex-1 bg-muted rounded-full h-3">
+              <div className="h-full bg-muted-foreground rounded-full" style={{width: '5%'}}></div>
+            </div>
+            <span className="text-xs text-muted-foreground">5%</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm w-4 text-primary font-bold">1:</span>
+            <div className="flex-1 bg-muted rounded-full h-3">
+              <div className="h-full bg-primary rounded-full" style={{width: '95%'}}></div>
+            </div>
+            <span className="text-xs text-primary font-bold">95%</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm w-4">2:</span>
+            <div className="flex-1 bg-muted rounded-full h-3">
+              <div className="h-full bg-muted-foreground rounded-full" style={{width: '2%'}}></div>
+            </div>
+            <span className="text-xs text-muted-foreground">2%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  right={
+    <LayeredNetwork
+      layers={[784, 128, 64, 10]}
+      labels={['Input', 'Hidden 1', 'Hidden 2', 'Output']}
+      className="mt-4"
+    />
+  }
+/>
+
+---
+
+## Deep Networks: More Layers = More Power
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Each Layer Learns Different Features</h3>
+  
+  <LayeredNetwork
+    layers={[100, 80, 60, 40, 20, 10]}
+    labels={['Raw Input', 'Edges', 'Shapes', 'Parts', 'Objects', 'Categories']}
+    animated={true}
+  />
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+    <Callout type="info" title="Why 'Deep'?">
+      Deep learning just means using neural networks with many layers. More layers = more complex patterns!
+    </Callout>
+    
+    <Callout type="success" title="Universal Approximators">
+      With enough neurons and layers, neural networks can learn almost any pattern in data.
+    </Callout>
+  </div>
+</div>
+
+---
+
+## Key Insights
+
+<div className="space-y-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="space-y-4">
+      <h3 className="text-xl font-bold">🎯 What Makes Them Powerful</h3>
+      <ul className="space-y-3">
+        <li className="flex items-start gap-3">
+          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+          <span className="text-sm">Learn from examples, not explicit programming</span>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+          <span className="text-sm">Find patterns humans might miss</span>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+          <span className="text-sm">Scale with more data and compute</span>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+          <span className="text-sm">Work across many different domains</span>
+        </li>
+      </ul>
+    </div>
+    
+    <div className="space-y-4">
+      <h3 className="text-xl font-bold">⚠️ Current Limitations</h3>
+      <ul className="space-y-3">
+        <li className="flex items-start gap-3">
+          <span className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
+          <span className="text-sm">Need lots of training data</span>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
+          <span className="text-sm">Can be overconfident when wrong</span>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
+          <span className="text-sm">Hard to explain their reasoning</span>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></span>
+          <span className="text-sm">Require significant computing power</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+---
+
+## Try Neural Networks Yourself
+
+<div className="space-y-4">
+  <h3 className="text-xl font-bold text-center">Interactive Demos</h3>
+  
+  <div className="grid gap-4">
+    <DemoLink
+      href="https://playground.tensorflow.org"
+      title="TensorFlow Playground"
+      description="Visualize how neural networks learn in your browser"
+      preview="Play with different architectures, datasets, and watch the learning process in real-time"
+      variant="large"
+    />
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DemoLink
+        href="https://teachablemachine.withgoogle.com/"
+        title="Teachable Machine"
+        description="Train your own models without code"
+        preview="Teach a computer to recognize images, sounds, or poses using your own examples"
+      />
+      
+      <DemoLink
+        href="https://quickdraw.withgoogle.com/"
+        title="Quick, Draw!"
+        description="Neural network guesses your drawings"
+        preview="See how well AI can recognize your doodles - surprisingly good!"
+      />
+    </div>
+  </div>
+</div>
+
+---
+
+<Callout type="success" title="Neural Networks: The Foundation">
+  You now understand the basics! Neural networks learn patterns from data by adjusting connections between simple processing units. Next, we'll see how attention mechanisms revolutionized this simple idea.
+</Callout>

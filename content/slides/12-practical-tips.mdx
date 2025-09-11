@@ -1,0 +1,452 @@
+---
+title: "Practical Tips for Using LLMs"
+section: 12
+duration: "3 minutes"
+objectives:
+  - "Learn best practices for using AI"
+  - "Understand common pitfalls to avoid"
+  - "Get actionable advice for daily use"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+
+<SectionHeader 
+  title="Practical Tips"
+  subtitle="Making the Most of AI in Your Daily Life"
+  gradient="from-emerald-400 via-green-500 to-lime-600"
+/>
+
+---
+
+## Getting Started with AI
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">Your First Steps</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="space-y-4">
+      <h4 className="font-bold text-blue-600 dark:text-blue-400">🚀 Getting Started</h4>
+      
+      <div className="space-y-3">
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">1. Choose Your AI Tool</h5>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            <li>• ChatGPT for general conversation</li>
+            <li>• Claude for analysis and writing</li>
+            <li>• GitHub Copilot for coding</li>
+            <li>• Midjourney for image generation</li>
+          </ul>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">2. Start Small</h5>
+          <p className="text-sm text-muted-foreground">
+            Begin with simple tasks like summarizing text or brainstorming ideas
+          </p>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">3. Practice Prompting</h5>
+          <p className="text-sm text-muted-foreground">
+            Experiment with different ways of asking for what you want
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div className="space-y-4">
+      <h4 className="font-bold text-green-600 dark:text-green-400">📝 Daily Use Cases</h4>
+      
+      <div className="space-y-3">
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">Writing & Communication</h5>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            <li>• Draft emails and messages</li>
+            <li>• Improve clarity and tone</li>
+            <li>• Generate outlines</li>
+          </ul>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">Learning & Research</h5>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            <li>• Explain complex topics</li>
+            <li>• Create study guides</li>
+            <li>• Practice questions</li>
+          </ul>
+        </div>
+        
+        <div className="glass-card p-4">
+          <h5 className="font-semibold mb-2">Problem Solving</h5>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            <li>• Brainstorm solutions</li>
+            <li>• Break down complex problems</li>
+            <li>• Get different perspectives</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Do's and Don'ts
+
+<TwoColumn
+  left={
+    <div className="space-y-4">
+      <h4 className="text-lg font-bold text-green-600 dark:text-green-400">✅ Best Practices</h4>
+      
+      <div className="space-y-3">
+        <div className="glass-card p-4 border-green-200 dark:border-green-800">
+          <h5 className="font-semibold text-green-700 dark:text-green-400 mb-2">✓ Be Specific</h5>
+          <p className="text-sm text-muted-foreground">
+            "Write a 500-word blog post about renewable energy for beginners"
+          </p>
+        </div>
+        
+        <div className="glass-card p-4 border-green-200 dark:border-green-800">
+          <h5 className="font-semibold text-green-700 dark:text-green-400 mb-2">✓ Iterate</h5>
+          <p className="text-sm text-muted-foreground">
+            If the first response isn't perfect, ask for improvements
+          </p>
+        </div>
+        
+        <div className="glass-card p-4 border-green-200 dark:border-green-800">
+          <h5 className="font-semibold text-green-700 dark:text-green-400 mb-2">✓ Verify Information</h5>
+          <p className="text-sm text-muted-foreground">
+            Always fact-check important claims, especially recent events
+          </p>
+        </div>
+        
+        <div className="glass-card p-4 border-green-200 dark:border-green-800">
+          <h5 className="font-semibold text-green-700 dark:text-green-400 mb-2">✓ Use Examples</h5>
+          <p className="text-sm text-muted-foreground">
+            Show the AI what you want with concrete examples
+          </p>
+        </div>
+      </div>
+    </div>
+  }
+  right={
+    <div className="space-y-4">
+      <h4 className="text-lg font-bold text-red-600 dark:text-red-400">❌ Common Mistakes</h4>
+      
+      <div className="space-y-3">
+        <div className="glass-card p-4 border-red-200 dark:border-red-800">
+          <h5 className="font-semibold text-red-700 dark:text-red-400 mb-2">✗ Trust Blindly</h5>
+          <p className="text-sm text-muted-foreground">
+            AI can be confident about wrong information - always verify
+          </p>
+        </div>
+        
+        <div className="glass-card p-4 border-red-200 dark:border-red-800">
+          <h5 className="font-semibold text-red-700 dark:text-red-400 mb-2">✗ Share Sensitive Data</h5>
+          <p className="text-sm text-muted-foreground">
+            Don't input passwords, personal info, or confidential data
+          </p>
+        </div>
+        
+        <div className="glass-card p-4 border-red-200 dark:border-red-800">
+          <h5 className="font-semibold text-red-700 dark:text-red-400 mb-2">✗ Expect Perfection</h5>
+          <p className="text-sm text-muted-foreground">
+            AI is a powerful tool, but it makes mistakes and has limitations
+          </p>
+        </div>
+        
+        <div className="glass-card p-4 border-red-200 dark:border-red-800">
+          <h5 className="font-semibent text-red-700 dark:text-red-400 mb-2">✗ Use for Everything</h5>
+          <p className="text-sm text-muted-foreground">
+            Some tasks still require human judgment and expertise
+          </p>
+        </div>
+      </div>
+    </div>
+  }
+/>
+
+---
+
+## Productivity Workflows
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">AI-Enhanced Work Patterns</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">📝 Writing Workflow</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">1</span>
+          </div>
+          <span className="text-sm">Brainstorm with AI: "Give me 10 angles on [topic]"</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">2</span>
+          </div>
+          <span className="text-sm">Create outline: "Organize these ideas into an outline"</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">3</span>
+          </div>
+          <span className="text-sm">Write first draft yourself</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">4</span>
+          </div>
+          <span className="text-sm">Ask AI to improve clarity and flow</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🔍 Research Workflow</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">1</span>
+          </div>
+          <span className="text-sm">Ask for overview: "Explain [topic] at a high level"</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">2</span>
+          </div>
+          <span className="text-sm">Identify key questions to investigate</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">3</span>
+          </div>
+          <span className="text-sm">Research authoritative sources independently</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">4</span>
+          </div>
+          <span className="text-sm">Ask AI to help synthesize findings</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🚀 Learning Workflow</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">1</span>
+          </div>
+          <span className="text-sm">Get personalized explanation at your level</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">2</span>
+          </div>
+          <span className="text-sm">Ask for analogies and examples</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">3</span>
+          </div>
+          <span className="text-sm">Request practice questions</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">4</span>
+          </div>
+          <span className="text-sm">Get feedback on your understanding</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🤔 Problem-Solving Workflow</h4>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">1</span>
+          </div>
+          <span className="text-sm">Clearly describe the problem</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">2</span>
+          </div>
+          <span className="text-sm">Ask AI to break it down into steps</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">3</span>
+          </div>
+          <span className="text-sm">Brainstorm multiple solution approaches</span>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-white text-xs">4</span>
+          </div>
+          <span className="text-sm">Evaluate pros and cons of each approach</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Advanced Techniques
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Power User Tips</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🎯 Custom Instructions</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Set up persistent instructions for consistent behavior
+      </p>
+      <div className="bg-muted/30 p-3 rounded text-sm font-mono">
+        "Always explain technical concepts with analogies. Ask clarifying questions if my request is ambiguous. Use bullet points for lists."
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🔗 Chain Prompting</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Break complex tasks into a series of focused prompts
+      </p>
+      <div className="space-y-2 text-xs">
+        <div className="bg-blue-50 dark:bg-blue-950/30 p-2 rounded">1. "Analyze this data for trends"</div>
+        <div className="bg-green-50 dark:bg-green-950/30 p-2 rounded">2. "What are the implications?"</div>
+        <div className="bg-purple-50 dark:bg-purple-950/30 p-2 rounded">3. "Recommend next steps"</div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🎨 Creative Constraints</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Use limitations to spark more creative responses
+      </p>
+      <div className="bg-muted/30 p-3 rounded text-sm font-mono">
+        "Write a story in exactly 55 words where every sentence starts with the next letter of the alphabet."
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🔄 Iterative Refinement</h4>
+      <p className="text-sm text-muted-foreground mb-3">
+        Use AI output as starting point, then refine
+      </p>
+      <div className="space-y-2 text-xs">
+        <div className="bg-gray-50 dark:bg-gray-950/30 p-2 rounded">Generate → Critique → Improve → Repeat</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Security and Privacy
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Staying Safe with AI</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold text-red-600 dark:text-red-400">🔒 What NOT to Share</h4>
+      <ul className="text-sm space-y-2 text-muted-foreground">
+        <li>• Passwords or API keys</li>
+        <li>• Personal identification</li>
+        <li>• Financial information</li>
+        <li>• Proprietary business data</li>
+        <li>• Medical records</li>
+        <li>• Legal documents</li>
+      </ul>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold text-orange-600 dark:text-orange-400">⚠️ Be Cautious With</h4>
+      <ul className="text-sm space-y-2 text-muted-foreground">
+        <li>• Work-related content</li>
+        <li>• Personal opinions</li>
+        <li>• Contact information</li>
+        <li>• Location data</li>
+        <li>• Photos with faces</li>
+        <li>• Private conversations</li>
+      </ul>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold text-green-600 dark:text-green-400">✅ Generally Safe</h4>
+      <ul className="text-sm space-y-2 text-muted-foreground">
+        <li>• Public information</li>
+        <li>• Learning topics</li>
+        <li>• Creative projects</li>
+        <li>• General questions</li>
+        <li>• Hypothetical scenarios</li>
+        <li>• Published content</li>
+      </ul>
+    </div>
+  </div>
+  
+  <Callout type="warning" title="Remember">
+    When in doubt, don't share it. You can often rephrase your question to get help without revealing sensitive details.
+  </Callout>
+</div>
+
+---
+
+## Building Your AI Toolkit
+
+<div className="space-y-4">
+  <h3 className="text-xl font-bold text-center">Essential AI Tools for Different Needs</h3>
+  
+  <div className="grid gap-4">
+    <DemoLink
+      href="https://chat.openai.com/"
+      title="Start with ChatGPT"
+      description="The most popular AI assistant for general use"
+      preview="Great for writing, analysis, coding, and learning"
+      variant="large"
+    />
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DemoLink
+        href="https://claude.ai/"
+        title="Try Claude for Analysis"
+        description="Excellent for detailed analysis and long-form content"
+        preview="Strong reasoning capabilities and helpful personality"
+      />
+      
+      <DemoLink
+        href="https://www.perplexity.ai/"
+        title="Perplexity for Research"
+        description="AI search engine with citations"
+        preview="Get answers with sources and real-time information"
+      />
+    </div>
+  </div>
+</div>
+
+---
+
+<Callout type="success" title="You're Ready to AI!">
+  Start small, be specific, verify important information, and remember - AI is a powerful assistant, not a replacement for human judgment. Happy prompting!
+</Callout>

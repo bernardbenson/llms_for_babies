@@ -1,0 +1,346 @@
+---
+title: "Attention Mechanisms"
+section: 3
+duration: "4 minutes"
+objectives:
+  - "Understand what attention means in AI"
+  - "See how attention solves sequence problems"
+  - "Visualize attention patterns"
+---
+
+import { SectionHeader } from '@/components/slides/section-header'
+import { DemoLink, Callout, TwoColumn, Figure } from '@/components/slides/demo-link'
+import { AttentionHeatmap, MultiHeadAttention } from '@/components/diagrams/attention-heatmap'
+
+<SectionHeader 
+  title="Attention Mechanisms"
+  subtitle="Teaching AI to Focus"
+  gradient="from-emerald-400 via-teal-500 to-blue-600"
+/>
+
+---
+
+## What Is Attention?
+
+<TwoColumn 
+  left={
+    <div className="space-y-6">
+      <h3 className="text-xl font-bold">Think About Reading This Sentence</h3>
+      
+      <div className="bg-muted/30 p-4 rounded-lg text-center">
+        <p className="text-lg">
+          "The <span className="bg-primary/20 px-1 rounded">cat</span> that chased the mouse sat on the <span className="bg-primary/20 px-1 rounded">mat</span>."
+        </p>
+        <p className="text-sm text-muted-foreground mt-2">
+          When processing "mat", you automatically connect it to "cat" - not "mouse"
+        </p>
+      </div>
+      
+      <div className="space-y-4">
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-sm">👁️</span>
+          </div>
+          <div>
+            <h4 className="font-semibold">Selective Focus</h4>
+            <p className="text-sm text-muted-foreground">Pay attention to relevant parts, ignore the rest</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-sm">🔗</span>
+          </div>
+          <div>
+            <h4 className="font-semibold">Dynamic Connections</h4>
+            <p className="text-sm text-muted-foreground">Relationships change based on context</p>
+          </div>
+        </div>
+        
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+            <span className="text-sm">⚡</span>
+          </div>
+          <div>
+            <h4 className="font-semibold">Parallel Processing</h4>
+            <p className="text-sm text-muted-foreground">Consider all words simultaneously</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  right={
+    <div className="mt-8">
+      <AttentionHeatmap 
+        sentence="The cat sat on the mat"
+        interactive={true}
+        animated={true}
+      />
+    </div>
+  }
+/>
+
+---
+
+## The Problem Attention Solves
+
+<div className="space-y-8">
+  <h3 className="text-2xl font-bold text-center">Old Way vs. Attention Way</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="glass-card p-6 space-y-4 border-red-200 dark:border-red-800">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center">
+          <span className="text-xl">📦</span>
+        </div>
+        <h4 className="text-lg font-bold text-red-700 dark:text-red-400">Sequential Processing</h4>
+      </div>
+      
+      <div className="space-y-3">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-red-200 dark:bg-red-800 rounded"></div>
+          <span className="text-sm">Process one word at a time</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-red-200 dark:bg-red-800 rounded"></div>
+          <span className="text-sm">Earlier words get "forgotten"</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-red-200 dark:bg-red-800 rounded"></div>
+          <span className="text-sm">Slow - can't parallelize</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-red-200 dark:bg-red-800 rounded"></div>
+          <span className="text-sm">Struggles with long sequences</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4 border-green-200 dark:border-green-800">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+          <span className="text-xl">🌐</span>
+        </div>
+        <h4 className="text-lg font-bold text-green-700 dark:text-green-400">Attention Mechanism</h4>
+      </div>
+      
+      <div className="space-y-3">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-green-200 dark:bg-green-800 rounded"></div>
+          <span className="text-sm">See all words simultaneously</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-green-200 dark:bg-green-800 rounded"></div>
+          <span className="text-sm">Direct connections between any words</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-green-200 dark:bg-green-800 rounded"></div>
+          <span className="text-sm">Fast - highly parallelizable</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-green-200 dark:bg-green-800 rounded"></div>
+          <span className="text-sm">Handles long sequences easily</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## How Attention Works: Query, Key, Value
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">It's Like a Sophisticated Search Engine</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="glass-card p-6 text-center space-y-4">
+      <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto">
+        <span className="text-2xl">🔍</span>
+      </div>
+      <h4 className="font-bold text-blue-700 dark:text-blue-400">Query (Q)</h4>
+      <p className="text-sm text-muted-foreground">
+        "What am I looking for?"<br/>
+        The current word asking for context
+      </p>
+      <div className="bg-blue-50 dark:bg-blue-950/50 p-2 rounded text-xs">
+        "mat" → "What relates to me?"
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 text-center space-y-4">
+      <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto">
+        <span className="text-2xl">🗝️</span>
+      </div>
+      <h4 className="font-bold text-purple-700 dark:text-purple-400">Key (K)</h4>
+      <p className="text-sm text-muted-foreground">
+        "What am I?"<br/>
+        Each word's searchable representation
+      </p>
+      <div className="bg-purple-50 dark:bg-purple-950/50 p-2 rounded text-xs">
+        "cat", "mouse", "sat" → Available for matching
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 text-center space-y-4">
+      <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
+        <span className="text-2xl">💎</span>
+      </div>
+      <h4 className="font-bold text-green-700 dark:text-green-400">Value (V)</h4>
+      <p className="text-sm text-muted-foreground">
+        "What information do I carry?"<br/>
+        The actual content to be retrieved
+      </p>
+      <div className="bg-green-50 dark:bg-green-950/50 p-2 rounded text-xs">
+        Rich representations of each word's meaning
+      </div>
+    </div>
+  </div>
+  
+  <Callout type="info" title="The Magic Formula">
+    **Attention(Q,K,V) = softmax(QK^T)V**
+    <br/>Don't worry about the math - it's just "find relevant connections and blend their values"
+  </Callout>
+</div>
+
+---
+
+## Multi-Head Attention: Multiple Perspectives
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Different Heads Focus on Different Things</h3>
+  
+  <MultiHeadAttention 
+    heads={4}
+    sentence="The cat sat on the mat"
+  />
+  
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+    <div className="text-center p-4 bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/30 rounded-lg">
+      <h5 className="font-semibold text-blue-700 dark:text-blue-400 mb-2">Head 1</h5>
+      <p className="text-xs">Position relationships</p>
+    </div>
+    <div className="text-center p-4 bg-gradient-to-b from-purple-50 to-purple-100 dark:from-purple-950/50 dark:to-purple-900/30 rounded-lg">
+      <h5 className="font-semibold text-purple-700 dark:text-purple-400 mb-2">Head 2</h5>
+      <p className="text-xs">Grammar patterns</p>
+    </div>
+    <div className="text-center p-4 bg-gradient-to-b from-green-50 to-green-100 dark:from-green-950/50 dark:to-green-900/30 rounded-lg">
+      <h5 className="font-semibold text-green-700 dark:text-green-400 mb-2">Head 3</h5>
+      <p className="text-xs">Semantic meaning</p>
+    </div>
+    <div className="text-center p-4 bg-gradient-to-b from-orange-50 to-orange-100 dark:from-orange-950/50 dark:to-orange-900/30 rounded-lg">
+      <h5 className="font-semibold text-orange-700 dark:text-orange-400 mb-2">Head 4</h5>
+      <p className="text-xs">Self-attention</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Real-World Examples
+
+<div className="space-y-6">
+  <h3 className="text-xl font-bold text-center">Where Attention Shines</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">🌍 Machine Translation</h4>
+      <div className="space-y-2">
+        <p className="text-sm">
+          <span className="font-medium">English:</span> "I am a student"
+        </p>
+        <p className="text-sm">
+          <span className="font-medium">French:</span> "Je suis un étudiant"
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Attention helps align "I"→"Je", "am"→"suis", etc.
+        </p>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">📝 Text Summarization</h4>
+      <div className="space-y-2">
+        <p className="text-sm text-muted-foreground">
+          Long article about climate change...
+        </p>
+        <p className="text-sm">
+          <span className="font-medium">Summary:</span> "Global temperatures rising due to human activities."
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Attention identifies the most important information
+        </p>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">❓ Question Answering</h4>
+      <div className="space-y-2">
+        <p className="text-sm">
+          <span className="font-medium">Context:</span> "Paris is the capital of France."
+        </p>
+        <p className="text-sm">
+          <span className="font-medium">Question:</span> "What is France's capital?"
+        </p>
+        <p className="text-sm text-primary">
+          <span className="font-medium">Answer:</span> "Paris"
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Attention connects "France's capital" to "Paris"
+        </p>
+      </div>
+    </div>
+    
+    <div className="glass-card p-6 space-y-4">
+      <h4 className="font-bold">💭 Coreference Resolution</h4>
+      <div className="space-y-2">
+        <p className="text-sm">
+          "John went to the store. <span className="text-primary font-medium">He</span> bought milk."
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Attention learns that "He" refers to "John"
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## Explore Attention Patterns
+
+<div className="space-y-4">
+  <h3 className="text-xl font-bold text-center">See Attention in Action</h3>
+  
+  <div className="grid gap-4">
+    <DemoLink
+      href="https://exbert.net/"
+      title="exBERT"
+      description="Visualize attention patterns in BERT"
+      preview="See exactly what different attention heads are focusing on in real sentences"
+      variant="large"
+    />
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DemoLink
+        href="https://transformer-circuits.pub/2021/framework/index.html"
+        title="Anthropic's Transformer Circuits"
+        description="Deep dive into how transformers work"
+        preview="Research-level analysis of what's happening inside attention mechanisms"
+      />
+      
+      <DemoLink
+        href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/"
+        title="Jay Alammar's Visualizations"
+        description="Beautiful attention visualizations"
+        preview="Step-by-step visual explanations of attention in translation"
+      />
+    </div>
+  </div>
+</div>
+
+---
+
+<Callout type="success" title="Attention: The Game Changer">
+  Attention mechanisms allow AI to focus on relevant information dynamically, solving the biggest problems of sequential processing. This breakthrough made modern language models possible!
+</Callout>
